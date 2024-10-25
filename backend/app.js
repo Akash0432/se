@@ -5,7 +5,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
 const cors = require('cors')
-
+const bus=require("./models/Buses")
+const seedBusData=require("./busController")
 
 var app = express();
 
@@ -37,6 +38,10 @@ mongoose.connect(DB_URL, {
     .catch(err => {
         throw err
     })
+
+
+
+
 //---------------------------------------------
 
 

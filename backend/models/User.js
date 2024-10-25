@@ -21,11 +21,7 @@ const UserSchema = new Schema({
     gender: {
         type: String,
         required: true,
-    },
-    dob: {
-        type: Date,
-        required: false,
-    },
+    }
 });
 
 const User = mongoose.model("user", UserSchema);

@@ -26,7 +26,8 @@ const BusSchema = new Schema({
     },
     pricePerSeat: {
         type: String
-    }
+    },
+    date: { type: Date } 
 }, {collection: "buses"})
 
 const bus = mongoose.model('bus', BusSchema)

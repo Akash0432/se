@@ -10,6 +10,30 @@ var bus = require('../models/Buses');
 //     })
 // })
 
+router.get('/available', async (req, res) => {
+    const { startCity, destination, date } = req.query; // Use req.query for GET request
+    try {
+        const buses = await bus.find({
+            startCity: startCity,
+            destination: destination,
+            date: new Date(date) // Ensure date is a Date object
+        });
+
+        res.status(200).json({
+            success: true,
+            buses
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            message: "Error retrieving buses",
+            error: err.message
+        });
+    }
+});
+
+
 router.post('/', (req, res) => {
 
     bus.find({ 'startCity': req.body.startCity, 'destination': req.body.destination }).exec((err, bus) => {
